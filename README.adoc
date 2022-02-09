@@ -1,0 +1,88 @@
+= Programming Paradigms – Practical work assignment – Object Oriented Concepts in C#
+
+The first four weeks of the Programming Paradigms course are assigned to a paradigm you’re already quite familiar with, being the Object Oriented Paradigm. We’ll apply this paradigm using the .NET environment, with the following goals:
+
+•	Writing a small application in which we are really aware of and apply the Object Orientation principles, in order to compare the paradigm with other paradigms later on.
+•	Getting familiar with another OO-language. The .NET environment is also heavily used in practice. We’ll pay attention to differences between Java and .NET and to different new language concepts (e.g. delegates, LINQ, extension methods, operator overloading).
+•	Getting familiar with basic XML and XML features
+•	Getting familiar with Reflection, the ability of OO-programs to inspect themselves.
+
+
+== Assignment Part 1 - Appetizer
+
+This assignment is just a small warming up to get some (first?) experience with application development using the .NET framework and C# specifically. Programming in C# is conceptually very much the same as programming in Java. You’ll notice that there are some slight conceptual and syntactical differences. We’ll have a further look at framework and language elements being specific for .NET. later. For the moment however, we’ll have a look at some well-known concepts.
+
+Main purpose of this assignment is not solving the assignment in itself, however to setup your environment and to read about / study the .NET framework and the C# language (“der Weg ist das Ziel”). Have a look at books and/or tutorials to get familiar with the basics. 
+      
+You have to implement a car dealer scenario. Create a Console Application that enables you to enter Vehicle data. A vehicle can for example be a car or a truck. Vehicles are stored in memory, so persistence is not necessary at the moment. A list of vehicles is maintained and can be ‘queried’. You have to be able to print a list of Vehicles and their most important characteristics, get the number of vehicles available, get the total value of all vehicles, get the price of a specific vehicle (based on ID), increase all prices with a certain percentage, search for a vehicle based on licence plate and search for a vehicle in a certain price range. Think about reasonable attributes and functionality yourself.      
+
+Make sure that you’re using,  studying, applying and able to explain the following concepts / tools:
+
+* Properties
+* Namespaces
+* Visibility
+* Interface and / or Abstract class
+* Inheritance and method overriding
+* Constructor overloading
+* Exception handling
+* Unit testing
+* LINQtoObjects
+* C# Coding conventions
+* Code documentation and documentation generation (compared to javadoc)
+* Explain the way from C# code to machine language code using the concepts Managed Code, IL, Metadata, JIT, CLR.
+* Proper class design
+
+== Assignment Part 2 – Main Course
+
+This assignment is an extension of assignment part 1. Within this assignment, you will develop a small console application for the maintenance of users (Students or Lecturers) for an administrative system. Users can be created and their information is stored in XML-format. Furthermore, an overview and a detail view of users can be given. Of course, the goal of this assignment is not the functionality as such, but the application of OO-, design- and language concepts.
+ 
+Write a console application with the following functional requirements / characteristics:
+
+* After execution, a menu with the following menu options is displayed: 
+
+. Create user 
+. Show overview users in database 
+. Show user details
+. Exit application
+
+* After choosing the first menu option, you’ll respectively be asked to enter the following data:
+
+** User type (student or lecturer)
+** First name
+** Last name
+** Email address
+** Study Program (students only)
+** Cohort (students)
+** Class (students)
+** Phone number work (lecturers)
+** Lecturers abbreviation (lecturers)
+** Nationality
+** Date started (lecturers)
+
+* All the information is stored in one or more structured text files (XML). You don’t have to use XML schema’s.
+* The email address and dates have to be validated. Regarding the email address, use your own regular expression or be able to explain an existing one.
+* All users get a unique id (a sequence number) automatically.
+* After choosing the second menu option, a list of all users in your ‘database’ is displayed. For each user, the id, first name and last name are displayed.
+* After choosing the third menu option, you’ll be asked to enter a user id. All details for this user have to be displayed.
+* In general, exceptions are properly handled.
+* Assume it’s a single-user application, so don’t worry about concurrent use.
+* Optional: create an additional command and menu-option to generate an html-file containing an overview of all users listed in a table. The html-file is generated, using XSLT.
+* Optional: the key combination ‘ctrl-C’ can be used to abort during entrance of a new user. The main menu is displayed again.
+ 
+The following non-functional requirements MUST be met:
+
+* The console application uses a Command object for each menu-option. A command encapsulates an Action delegate object and contains a Description property.
+* Currently, data is stored in one or more XML files. In the future, persistence in a relational database is required. Make sure that your application is designed in such a way that the console application itself is completely unaware of the persistence back-end. E.g. Use the abstract factory pattern to do so. The AbstractDBFactory class determines, based on the configuration in App.config, which DBFactory class is instantiated. The XMLDBFactory reads the file details from the App.config as well. Note: we’ll not implement the relational database option! Here it is just about future-ready design.
+* The application needs to be extendible. New types of users (any other sub type of the abstract class User) can be created by writing a new sub class. The application automatically detects the existence of that type, and offers the possibility to enter a new user of that type. No change in the existing application should be necessary. To achieve this, you have to use Reflection at several places. Idea is that you’re not hard-coding which properties a certain user type has, but that you use reflection to obtain that information.
+* Make use of a home-made annotation (called Attribute in .NET). You’ll probably find a use case for that during the implementation.  
+
+Use the SDK documentation to find out how to use the FCL (Framework Class Library).
+
+
+== Organisational
+
+Deadline:	Tuesday 15th of March, 23.59
+
+During the assessment, authenticity of work is tested. You’ll be asked to explain the applied concepts and to reflect on the Object Orientation principles. The work is not graded, it’s passed or not passed.
+
+During the second lesson week, solution approaches for assignment part 1 will be discussed in class. During the 3rd lesson week, solution approaches for assignment part 2 will be discussed in class.
