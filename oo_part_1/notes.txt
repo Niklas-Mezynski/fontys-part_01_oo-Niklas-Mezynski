@@ -1,0 +1,24 @@
+﻿Vehicle types:
+- Car
+- Truck
+- Motorcycle
+
+Vehicle properties:
+- ID
+- Price
+- Licence Plate
+- Top Speed
+
+Type specific attributes
+- Car: Number of seats
+- Truck: Trailer max weight
+- Motorcycle: Snens
+
+Functionalities:
+- print all vehicles
+- add vehicles
+- increase price of all vehicles
+- get no of vehicles
+- price of all vehicles
+- search vehicle by id
+- search vehicle by licence plate
