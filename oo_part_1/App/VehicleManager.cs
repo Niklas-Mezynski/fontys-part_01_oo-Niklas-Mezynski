@@ -6,7 +6,7 @@ namespace oo_part_1.App
     public class VehicleManager
     {
         private List<Vehicle> vehicles;
-        private int nextId;
+        private int nextId = 0;
 
         public VehicleManager()
         {
@@ -75,6 +75,7 @@ namespace oo_part_1.App
         {
             var car = new Car(price, licencePlate, topSpeed, noOfSeatsVehicle);
             vehicles.Add(car);
+            nextId++;
             return car;
         }
         
@@ -82,6 +83,7 @@ namespace oo_part_1.App
         {
             var vehicle = new Truck(price, licencePlate, topSpeed, maxTrailerWeight);
             vehicles.Add(vehicle);
+            nextId++;
             return vehicle;
         }
         
@@ -89,18 +91,20 @@ namespace oo_part_1.App
         {
             var motorcycle = new Motorcycle(price, licencePlate, topSpeed, coolness);
             vehicles.Add(motorcycle);
+            nextId++;
             return motorcycle;
         }
 
         public int GetNextId()
         {
-            int maxId = 0;
-            foreach (var vehicle in vehicles)
-            {
-                if (vehicle.Id > maxId)
-                    maxId = vehicle.Id;
-            }
-            return maxId++;
+            return nextId;
+            // int maxId = -1;
+            // foreach (var vehicle in vehicles)
+            // {
+            //     if (vehicle.Id > maxId)
+            //         maxId = vehicle.Id;
+            // }
+            // return ++maxId;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace oo_part_1
             simulation.startSimulation();
         }
         
-        public static VehicleManager getVehicleManager() {
+        public static VehicleManager GetVehicleManager() {
             return simulation.GetVehicleManager();
         }
     }

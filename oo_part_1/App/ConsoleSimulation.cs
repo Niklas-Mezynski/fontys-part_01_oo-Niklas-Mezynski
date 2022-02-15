@@ -15,7 +15,7 @@ namespace oo_part_1.App
         {
             while (true)
             {
-                Console.WriteLine("What do you want to do?\n" +
+                Console.WriteLine("\nWhich action do you want to perform? Enter the number please\n" +
                                   "0 - exit\n" +
                                   "1 - Add a car\n" +
                                   "2 - print all cars\n" +
@@ -24,8 +24,7 @@ namespace oo_part_1.App
                                   "5 - increase the price of all vehicles\n" +
                                   "6 - search a vehicle by ID\n" +
                                   "7 - search a vehicle by licence plate");
-                string input = Console.ReadLine();
-                int action = int.Parse(input);
+                int action = readIntFromConsole();
 
                 switch (action)
                 {
@@ -43,11 +42,11 @@ namespace oo_part_1.App
                         break;
                     case 5:
                         Console.Out.WriteLine("Enter the percentage amount by which u wanna increase the prices: ");
-                        manager.increasePriceOfAllVehicles(int.Parse(Console.ReadLine()));
+                        manager.increasePriceOfAllVehicles(readIntFromConsole());
                         break;
                     case 6:
                         Console.Out.WriteLine("Enter the ID of the vehicle you search: ");
-                        var vehicle = manager.searchVehicleById(int.Parse(Console.ReadLine()));
+                        var vehicle = manager.searchVehicleById(readIntFromConsole());
                         Console.Out.WriteLine(vehicle);
                         break;
                     case 7:
@@ -81,42 +80,78 @@ namespace oo_part_1.App
                                   "1 - Car\n" +
                                   "2 - Truck\n" +
                                   "3 - Motorcycle");
-            string input = Console.ReadLine();
-            int type = int.Parse(input);
+            int type = readIntFromConsole();
             
             Console.Out.WriteLine("Enter a price:");
-            double price = double.Parse(Console.ReadLine());
+            double price = readDoubleFromConsole();
 
             Console.Out.WriteLine("Enter the licence plate:");
             string licence = Console.ReadLine();
             
             Console.Out.WriteLine("Enter the top speed (in km/h):");
-            int topSpeed = int.Parse(Console.ReadLine());
+            int topSpeed = readIntFromConsole();
             
             switch (type)
             {
                 case 2:
                     Console.Out.WriteLine("Enter a max weight for the trailer (in kg):");
-                    int maxWeight = int.Parse(Console.ReadLine());
+                    int maxWeight = readIntFromConsole();
                     Vehicle truck = manager.addTruck(price, licence, topSpeed, maxWeight);
                     Console.Out.WriteLine("Truck created successfully!");
                     Console.Out.WriteLine(truck.ToString());
                     break;
                 case 3:
                     Console.Out.WriteLine("Enter the level of coolness of the motorcycle:");
-                    int coolness = int.Parse(Console.ReadLine());
+                    int coolness = readIntFromConsole();
                     Vehicle mc = manager.addMotorcycle(price, licence, topSpeed, coolness);
                     Console.Out.WriteLine("Motorcycle created successfully!");
                     Console.Out.WriteLine(mc.ToString());
                     break;
                 default:
                     Console.Out.WriteLine("Enter the number of seats:");
-                    int seats = int.Parse(Console.ReadLine());
+                    int seats = readIntFromConsole();
                     Vehicle car = manager.addCar(price, licence, topSpeed, seats);
                     Console.Out.WriteLine("Car created successfully!");
                     Console.Out.WriteLine(car.ToString());
                     break;
             }
         }
+
+        private int readIntFromConsole()
+        {
+            int i = 0;
+            while (true)
+            {
+                string s = Console.ReadLine();
+                if (Int32.TryParse(s, out i))
+                {
+                    return i;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid integer value");
+                }
+            }
+        }
+        
+        private double readDoubleFromConsole()
+        {
+            double i = 0;
+            while (true)
+            {
+                string s = Console.ReadLine();
+                if (double.TryParse(s, out i))
+                {
+                    return i;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid double value");
+                }
+            }
+        }
     }
+    
 }
