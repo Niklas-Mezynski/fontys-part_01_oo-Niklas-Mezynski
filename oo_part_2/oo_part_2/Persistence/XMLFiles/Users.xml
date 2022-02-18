@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Users>
+  <Student>
+    <Id>1</Id>
+    <FirstName>Daniel</FirstName>
+    <LastName>Weinstein</LastName>
+    <EmailAddress>daniel@gmail.com</EmailAddress>
+    <Nationality>russia</Nationality>
+    <StudyProgram>snens</StudyProgram>
+    <Cohort>3</Cohort>
+    <Class>SE</Class>
+  </Student>
+  <Student>
+    <Id>2</Id>
+    <FirstName>hans</FirstName>
+    <LastName>fwewefw</LastName>
+    <EmailAddress>fwefwe</EmailAddress>
+    <Nationality>qddqwwq</Nationality>
+    <StudyProgram>fweaf</StudyProgram>
+    <Cohort>two</Cohort>
+    <Class>fwe</Class>
+  </Student>
+  <Lecturer>
+    <Id>3</Id>
+    <FirstName>max</FirstName>
+    <LastName>mustermann</LastName>
+    <EmailAddress>fwe@fwe.de</EmailAddress>
+    <Nationality>german</Nationality>
+    <PhoneNumber>653464</PhoneNumber>
+    <Abbreviation>ACAB</Abbreviation>
+    <DateStarted>17.12.2021</DateStarted>
+  </Lecturer>
+</Users>

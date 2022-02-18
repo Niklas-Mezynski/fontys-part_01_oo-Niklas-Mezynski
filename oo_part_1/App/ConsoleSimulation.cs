@@ -116,42 +116,6 @@ namespace oo_part_1.App
                     break;
             }
         }
-
-        private int readIntFromConsole()
-        {
-            int i = 0;
-            while (true)
-            {
-                string s = Console.ReadLine();
-                if (Int32.TryParse(s, out i))
-                {
-                    return i;
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Please enter a valid integer value");
-                }
-            }
-        }
-        
-        private double readDoubleFromConsole()
-        {
-            double i = 0;
-            while (true)
-            {
-                string s = Console.ReadLine();
-                if (double.TryParse(s, out i))
-                {
-                    return i;
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Please enter a valid double value");
-                }
-            }
-        }
     }
     
 }
