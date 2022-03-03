@@ -27,6 +27,7 @@ public class ConsoleSimulation
                                   "3. Show user details\n" +
                                   "4. Exit application\n");
                 int action = Helpers.ReadIntFromConsole();
+                Console.Clear();
 
                 switch (action)
                 {
@@ -48,7 +49,10 @@ public class ConsoleSimulation
                 {
                     break;
                 }
-                
+
+                Console.Out.Write("-----------------Press enter to continue-----------------");
+                Console.ReadLine();
+                Console.Clear();
             }
             Console.WriteLine("End of program");
         }

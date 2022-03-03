@@ -3,9 +3,8 @@
 public interface IUser
 {
     int Id { get; }
-
+    
     string FirstName { get; set; }
-
     string LastName { get; set; }
 
     string EmailAddress { get; set; }

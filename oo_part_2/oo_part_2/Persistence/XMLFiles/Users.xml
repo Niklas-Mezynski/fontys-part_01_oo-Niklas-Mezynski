@@ -30,4 +30,24 @@
     <Abbreviation>ACAB</Abbreviation>
     <DateStarted>17.12.2021</DateStarted>
   </Lecturer>
+  <Lecturer>
+    <Id>4</Id>
+    <FirstName>gwerfgwerwer</FirstName>
+    <LastName>gerertervert</LastName>
+    <EmailAddress>gvertwerhht@gerwatg</EmailAddress>
+    <Nationality>GER</Nationality>
+    <PhoneNumber>563465234</PhoneNumber>
+    <Abbreviation>DJ</Abbreviation>
+    <DateStarted>20.04.2020</DateStarted>
+  </Lecturer>
+  <Student>
+    <Id>5</Id>
+    <FirstName>Felix</FirstName>
+    <LastName>Pralle</LastName>
+    <EmailAddress>pralle@g</EmailAddress>
+    <Nationality>RUS</Nationality>
+    <StudyProgram>alcohol</StudyProgram>
+    <Cohort>idk</Cohort>
+    <Class>9</Class>
+  </Student>
 </Users>

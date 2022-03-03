@@ -2,6 +2,18 @@
 
 public class Helpers
 {
+    public static readonly Dictionary<Type, Func<string, Object>> typeParser = new()
+    {
+        {typeof(int), s => int.Parse(s)},
+        {typeof(DateOnly), s => DateOnly.Parse(s)},
+        {typeof(double), s => double.Parse(s)},
+    };
+    
+    //List of all types of users
+    public static IEnumerable<Type> userTypes = AppDomain.CurrentDomain.GetAssemblies()
+        .SelectMany(s => s.GetTypes())
+        .Where(p => typeof(IUser).IsAssignableFrom(p) && !p.IsInterface);
+
     public static int ReadIntFromConsole()
     {
         while (true)
@@ -19,7 +31,7 @@ public class Helpers
             }
         }
     }
-        
+
     public static double ReadDoubleFromConsole()
     {
         while (true)
@@ -44,7 +56,7 @@ public class Helpers
         {
             string? s = Console.ReadLine();
             DateOnly date;
-            if (DateOnly.TryParseExact(s,"yyyy-MM-dd", out date))
+            if (DateOnly.TryParseExact(s, "yyyy-MM-dd", out date))
             {
                 return date;
                 break;

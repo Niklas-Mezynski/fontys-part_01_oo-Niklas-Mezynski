@@ -16,50 +16,126 @@ public class CreateUserProcedure
 
     internal void startProcedure()
     {
-        Console.Out.WriteLine("What type of user would you like to add?\n" +
-                              "1. Student\n" +
-                              "2. Lecturer");
+        var userTypes = Helpers.userTypes.ToArray();
+
+        Console.Out.WriteLine("What type of user would you like to add?");
+        //Printing all User types
+        for (var i = 0; i < userTypes.Length; i++)
+        {
+            Console.Out.WriteLine($"{i + 1}. {userTypes[i].Name}");
+        }
+
+        //Asking the user to enter a type
         int typeInt;
         while (true)
         {
-            typeInt = Helpers.ReadIntFromConsole();
-            if (typeInt == 1 || typeInt == 2)
+            typeInt = Helpers.ReadIntFromConsole() - 1;
+            if (typeInt < userTypes.Length && typeInt >= 0)
             {
                 break;
             }
-
-            Console.Out.WriteLine("Please enter 1 or 2");
+            Console.Out.WriteLine($"Please enter a number between 1 and {userTypes.Length}");
         }
-
-        string type = "user";
-        switch (typeInt)
+        Type userTypeToAdd = userTypes[typeInt];
+        
+        //Asking for all the variables needed
+        var properties = userTypeToAdd.GetProperties();
+        Object[] userFields = new Object[properties.Length];
+        for (var i = 1; i < properties.Length; i++)
         {
-            case 1:
-                type = "student";
-                break;
-            case 2:
-                type = "lecturer";
-                break;
-        }
+            var property = properties[i];
+            
+            //Checking if there is a custom print for that property (Defined in the attribute)
+            ConsolePrintAttribute consolePrintAttribute = null;
+            foreach (var customAttribute in System.Attribute.GetCustomAttributes(property))
+            {
+                if (customAttribute is ConsolePrintAttribute)
+                {
+                    consolePrintAttribute = (ConsolePrintAttribute) customAttribute;
+                }
+            }
+            if (consolePrintAttribute != null)
+            {
+                //Using the custom print
+                Console.Out.WriteLine(consolePrintAttribute.GetConsoleOutput());
+            }
+            else
+            {
+                //Default print
+                Console.Out.WriteLine($"Please enter the {userTypeToAdd.Name}'s {property.Name}");
+            }
 
-        Console.Out.WriteLine($"Please enter the first name of the {type}");
-        var firstName = Console.ReadLine();
-        Console.Out.WriteLine($"Please enter the last name of the {type}");
-        var lastName = Console.ReadLine();
-        Console.Out.WriteLine($"Please enter the email address of the {type}");
-        var email = Console.ReadLine();
-        Console.Out.WriteLine($"Please enter the nationality of the {type}");
-        var nationality = Console.ReadLine();
+            //Reading the user input
+            var userFieldString = Console.ReadLine();
+            
+            //Checking if a type conversion needs to be performed
+            if (property.PropertyType != typeof(string))
+            {
+                //Type conversion needed
+                bool success = false;
+                while (!success)
+                {
+                    try
+                    {
+                        userFields[i] = Helpers.typeParser[property.PropertyType].Invoke(userFieldString);
+                        success = true;
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Invalid user input");
+                        success = false;
+                        userFieldString = Console.ReadLine();
+                    }
+                }
+                
+            }
+            //Accepting the string value
+            else
+            {
+                userFields[i] = userFieldString;
+            }
 
-        switch (typeInt)
-        {
-            case 1:
-                AddStudent(firstName, lastName, email, nationality);
-                break;
-            case 2:
-                AddLecturer(firstName, lastName, email, nationality);
-                break;
         }
+                
+        //Getting the correct constructor
+        var constructorInfo = userTypeToAdd.GetConstructors().First(info => info.GetParameters().Length == userFields.Length);
+                
+        //Constructing the user object and setting the ID
+        userFields[0] = _persistence.GetNextId();
+        var user = (IUser)constructorInfo.Invoke(userFields);
+        
+        //Saving the new user
+        _persistence.AddUser(user);
+
+        // string type = "user";
+        // switch (typeInt)
+        // {
+        //     case 1:
+        //         type = "student";
+        //         break;
+        //     case 2:
+        //         type = "lecturer";
+        //         break;
+        // }
+        //
+        // Console.Out.WriteLine($"Please enter the first name of the {type}");
+        // var firstName = Console.ReadLine();
+        // Console.Out.WriteLine($"Please enter the last name of the {type}");
+        // var lastName = Console.ReadLine();
+        // Console.Out.WriteLine($"Please enter the email address of the {type}");
+        // var email = Console.ReadLine();
+        // Console.Out.WriteLine($"Please enter the nationality of the {type}");
+        // var nationality = Console.ReadLine();
+        //
+        // switch (typeInt)
+        // {
+        //     case 1:
+        //         AddStudent(firstName, lastName, email, nationality);
+        //         break;
+        //     case 2:
+        //         AddLecturer(firstName, lastName, email, nationality);
+        //         break;
+        // }
     }
 
     private void AddStudent(string? firstName, string? lastName, string? email, string? nationality)

@@ -43,7 +43,10 @@ public class Student : IStudent
                $"Class: {Class}";
     }
 
+    [ConsolePrint("Please enter the students study program")]
     public string StudyProgram { get; set; }
+    [ConsolePrint("Please enter the students cohort")]
     public string Cohort { get; set; }
+    [ConsolePrint("Please enter the students class")]
     public string Class { get; set; }
 }

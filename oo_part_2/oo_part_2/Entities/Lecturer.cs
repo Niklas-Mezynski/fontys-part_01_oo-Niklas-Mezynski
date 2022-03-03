@@ -35,8 +35,9 @@ public class Lecturer : ILecturer
                $"Abbreviation: {Abbreviation}\n" +
                $"DateStarted: {DateStarted.ToString( "yyyy-MM-dd")}";
     }
-
+    [ConsolePrint("Please enter the phone number of the lecturer")]
     public string PhoneNumber { get; set; }
     public string Abbreviation { get; set; }
+    [ConsolePrint("Please enter the date the lecturer started [YYYY-MM-DD]")]
     public DateOnly DateStarted { get; set; }
 }
