@@ -2,7 +2,7 @@
 
 public class Lecturer : ILecturer
 {
-    public Lecturer(int id, string firstName, string lastName, string emailAddress, string nationality, string phoneNumber, string abbreviation, DateOnly dateStarted)
+    public Lecturer(int id, string firstName, string lastName, Email emailAddress, string nationality, string phoneNumber, string abbreviation, DateOnly dateStarted)
     {
         Id = id;
         FirstName = firstName;
@@ -17,7 +17,7 @@ public class Lecturer : ILecturer
     public int Id { get; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
-    public string EmailAddress { get; set; }
+    public Email EmailAddress { get; set; }
     public string Nationality { get; set; }
     public string GetOverviewStringRepresentation()
     {

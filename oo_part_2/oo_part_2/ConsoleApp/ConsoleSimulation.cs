@@ -8,7 +8,7 @@ public class ConsoleSimulation
     private CreateUserProcedure _createUserProcedure;
     private UsersOverviewProcedure _usersOverviewProcedure;
     private UserDetailProcedure _userDetailProcedure;
-    
+
     public ConsoleSimulation(IDbFactory factory)
     {
         _persistence = factory.CreateUserPersistence();
@@ -17,43 +17,44 @@ public class ConsoleSimulation
         _userDetailProcedure = new UserDetailProcedure(_persistence);
     }
 
-        public void StartSimulation()
+    public void StartSimulation()
+    {
+        while (true)
         {
-            while (true)
+            Console.WriteLine("\nWhich action do you want to perform? Enter the number please\n" +
+                              "1. Create user\n" +
+                              "2. Show overview users in database\n" +
+                              "3. Show user details\n" +
+                              "4. Exit application\n");
+            int action = Helpers.ReadIntFromConsole();
+            Console.Clear();
+
+            switch (action)
             {
-                Console.WriteLine("\nWhich action do you want to perform? Enter the number please\n" +
-                                  "1. Create user\n" +
-                                  "2. Show overview users in database\n" +
-                                  "3. Show user details\n" +
-                                  "4. Exit application\n");
-                int action = Helpers.ReadIntFromConsole();
-                Console.Clear();
-
-                switch (action)
-                {
-                    case 1:
-                        _createUserProcedure.startProcedure();
-                        break;
-                    case 2:
-                        _usersOverviewProcedure.startProcedure();
-                        break;
-                    case 3:
-                        _userDetailProcedure.StartProcedure();
-                        break;
-                    case 4:
-                        action = 0;
-                        break;
-                }
-                
-                if (action == 0)
-                {
+                case 1:
+                    _createUserProcedure.startProcedure();
                     break;
-                }
-
-                Console.Out.Write("-----------------Press enter to continue-----------------");
-                Console.ReadLine();
-                Console.Clear();
+                case 2:
+                    _usersOverviewProcedure.startProcedure();
+                    break;
+                case 3:
+                    _userDetailProcedure.StartProcedure();
+                    break;
+                case 4:
+                    action = 0;
+                    break;
             }
-            Console.WriteLine("End of program");
+
+            if (action == 0)
+            {
+                break;
+            }
+
+            Console.Out.Write("-----------------Press enter to continue-----------------");
+            Console.ReadLine();
+            Console.Clear();
         }
+
+        Console.WriteLine("End of program");
+    }
 }

@@ -7,7 +7,7 @@ public class Student : IStudent
     {
     }
 
-    public Student(int id, string firstName, string lastName, string emailAddress, string nationality,
+    public Student(int id, string firstName, string lastName, Email emailAddress, string nationality,
         string studyProgram, string cohort, string @class)
     {
         Id = id;
@@ -23,7 +23,7 @@ public class Student : IStudent
     public int Id { get; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
-    public string EmailAddress { get; set; }
+    public Email EmailAddress { get; set; }
     public string Nationality { get; set; }
 
     public string GetOverviewStringRepresentation()

@@ -7,7 +7,7 @@ public interface IUser
     string FirstName { get; set; }
     string LastName { get; set; }
 
-    string EmailAddress { get; set; }
+    Email EmailAddress { get; set; }
 
     string Nationality { get; set; }
 

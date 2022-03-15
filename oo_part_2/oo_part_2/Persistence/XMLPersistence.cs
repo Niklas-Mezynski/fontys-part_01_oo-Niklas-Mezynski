@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Configuration;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Xml.Linq;
 using System.Xml.Serialization;
@@ -15,8 +16,8 @@ public class XMLPersistence : IUserPersistence
 
     public XMLPersistence()
     {        
-        var currentDirectory = Directory.GetCurrentDirectory();
-        this.xmlFilePath = currentDirectory + "\\..\\..\\..\\Persistence\\XMLFiles\\Users.xml";
+        string XMLFilePath = ConfigurationManager.AppSettings["XMLFilePath"];
+        this.xmlFilePath = XMLFilePath;
         this.usersInCache = LoadUsersToCache();
         this.currentId = CalculateCurrentMaxId();
     }

@@ -14,7 +14,7 @@
     <Id>2</Id>
     <FirstName>hans</FirstName>
     <LastName>fwewefw</LastName>
-    <EmailAddress>fwefwe</EmailAddress>
+    <EmailAddress>fwefwe@snens.com</EmailAddress>
     <Nationality>qddqwwq</Nationality>
     <StudyProgram>fweaf</StudyProgram>
     <Cohort>two</Cohort>
@@ -34,7 +34,7 @@
     <Id>4</Id>
     <FirstName>gwerfgwerwer</FirstName>
     <LastName>gerertervert</LastName>
-    <EmailAddress>gvertwerhht@gerwatg</EmailAddress>
+    <EmailAddress>gvertwerhht@gerwatg.com</EmailAddress>
     <Nationality>GER</Nationality>
     <PhoneNumber>563465234</PhoneNumber>
     <Abbreviation>DJ</Abbreviation>
@@ -44,10 +44,20 @@
     <Id>5</Id>
     <FirstName>Felix</FirstName>
     <LastName>Pralle</LastName>
-    <EmailAddress>pralle@g</EmailAddress>
+    <EmailAddress>pralle@g.nl</EmailAddress>
     <Nationality>RUS</Nationality>
     <StudyProgram>alcohol</StudyProgram>
     <Cohort>idk</Cohort>
     <Class>9</Class>
+  </Student>
+  <Student>
+    <Id>6</Id>
+    <FirstName>Daniel</FirstName>
+    <LastName>Weinstein</LastName>
+    <EmailAddress>pefkrewop@test123.com</EmailAddress>
+    <Nationality>RUS</Nationality>
+    <StudyProgram>BWL</StudyProgram>
+    <Cohort>123</Cohort>
+    <Class>123</Class>
   </Student>
 </Users>
